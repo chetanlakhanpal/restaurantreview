@@ -1,0 +1,11 @@
+@media screen and (max-width: 575px) {
+  #restaurants-list li {
+    margin: 0 auto;
+    margin-bottom: 20px;
+    width: auto;
+  }
+
+  .inside #map-container {
+    height: 200px;
+  }
+}
