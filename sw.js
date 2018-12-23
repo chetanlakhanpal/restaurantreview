@@ -23,11 +23,9 @@ const URLs = [
 self.addEventListener('install', function (event) {
   event.waitUntil(
       Promise.all(URLs.map(function (url) {
-        console.log(url);
           return fetch(url, {
               mode: 'no-cors'
           }).then(function (response) {
-            console.log(response);
               if (response.ok) {
                   caches.open('restaurant-reviews').then(function (cache) {
                       cache.put(url, response);
@@ -43,7 +41,7 @@ self.addEventListener('install', function (event) {
 
 self.addEventListener('fetch', (event) => {
   event.respondWith(
-    caches.match(event.request).then(response => {
+    caches.match(event.request, {ignoreSearch: true}).then(response => {
       if(response) {
         return response;
       }
